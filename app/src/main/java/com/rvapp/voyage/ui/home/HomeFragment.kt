@@ -11,8 +11,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.button.MaterialButton
 import com.rvapp.voyage.R
+import com.rvapp.voyage.model.entities.City
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import org.json.JSONArray
+import org.json.JSONObject
 
 class HomeFragment : Fragment() {
 
@@ -42,10 +45,23 @@ class HomeFragment : Fragment() {
 
             Thread {
                 val response = client.newCall(request).execute()
-                Log.d(null, response.body!!.string())
+                val cities = parse(response.body!!.string())
+                Log.d(null, cities.toString())
             }.start()
         }
 
         return root
+    }
+
+    fun parse(body: String) : MutableList<City> {
+        val cities = mutableListOf<City>()
+        val array = JSONObject(body).getJSONArray("cities")
+        for (i in 0 until array.length()) {
+            val jsonObject = array.getJSONObject(i)
+            val city = City(jsonObject.optInt("geonameid"), jsonObject.optString("name"),
+                jsonObject.optString("latitude"), jsonObject.optString("longitude"), jsonObject.optInt("population"), jsonObject.optString("timezone"))
+            cities.add(city)
+        }
+        return cities
     }
 }
