@@ -9,7 +9,11 @@
         android:id="@+id/nav_home"
         android:name="com.rvapp.voyage.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_discover"
+            app:destination="@id/nav_discover" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_gallery"
@@ -24,8 +28,8 @@
         tools:layout="@layout/fragment_slideshow" />
 
     <fragment
-        android:id="@+id/nav_blankFragment"
-        android:name="com.rvapp.voyage.BlankFragment"
-        android:label="fragment_blank"
+        android:id="@+id/nav_discover"
+        android:name="com.rvapp.voyage.ui.discover.DiscoverFragment"
+        android:label="Discover"
         tools:layout="@layout/fragment_blank" />
 </navigation>

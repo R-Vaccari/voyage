@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
@@ -31,6 +32,9 @@ class HomeFragment : Fragment() {
         })
         root.findViewById<MaterialButton>(R.id.import_bt).setOnClickListener {
             GlobalScope.launch { homeViewModel.getCitiesByCountryCode(editText.text.toString()) }
+        }
+        root.findViewById<MaterialButton>(R.id.discover_bt).setOnClickListener {
+            it.findNavController().navigate(R.id.action_nav_home_to_nav_discover)
         }
         return root
     }
