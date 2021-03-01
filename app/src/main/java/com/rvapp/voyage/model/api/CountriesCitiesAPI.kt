@@ -39,8 +39,8 @@ class CountriesCitiesAPI {
                     jsonObject.optString("latitude"),
                     jsonObject.optString("longitude"),
                     jsonObject.optInt("population"),
-                    jsonObject.optString("timezone")
-                )
+                    jsonObject.optString("timezone"),
+                null)
                 cities.add(city)
             }
             return cities

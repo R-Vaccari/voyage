@@ -10,9 +10,7 @@ import kotlinx.coroutines.launch
 
 class DiscoverViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
+    private val _text = MutableLiveData<String>()
     val text: LiveData<String> = _text
 
     private val _cities = MutableLiveData<Int>()
@@ -22,5 +20,8 @@ class DiscoverViewModel : ViewModel() {
         val cities = CountriesCitiesAPI.getCitiesFromCountryCode(countryCode)
         _cities.postValue(cities.size)
         return cities
+    }
+
+    fun getCityPicture() {
     }
 }

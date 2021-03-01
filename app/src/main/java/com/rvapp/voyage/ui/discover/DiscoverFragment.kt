@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -27,6 +28,9 @@ class DiscoverFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_discover, container, false)
         root.findViewById<MaterialButton>(R.id.text_gallery).setOnClickListener {
             GlobalScope.launch { PlacesAPI.makeRequestByName("Lisbon Portugal") }
+        }
+        homeViewModel.text.observe(viewLifecycleOwner) {
+            root.findViewById<ImageView>(R.id.picture)
         }
         return root
     }
