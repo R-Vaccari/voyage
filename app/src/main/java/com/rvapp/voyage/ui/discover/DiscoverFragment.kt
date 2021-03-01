@@ -11,6 +11,7 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
 import com.rvapp.voyage.R
+import com.rvapp.voyage.model.api.PlacesAPI
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -24,6 +25,9 @@ class DiscoverFragment : Fragment() {
     ): View? {
         homeViewModel = ViewModelProvider(this).get(DiscoverViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_discover, container, false)
+        root.findViewById<MaterialButton>(R.id.text_gallery).setOnClickListener {
+            GlobalScope.launch { PlacesAPI.makeRequestByName("Lisbon Portugal") }
+        }
         return root
     }
 }

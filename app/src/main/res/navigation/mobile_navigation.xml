@@ -30,6 +30,6 @@
     <fragment
         android:id="@+id/nav_discover"
         android:name="com.rvapp.voyage.ui.discover.DiscoverFragment"
-        android:label="Discover"
+        android:label="@string/menu_discover"
         tools:layout="@layout/fragment_blank" />
 </navigation>
