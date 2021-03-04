@@ -26,11 +26,7 @@ class DiscoverFragment : Fragment() {
         homeViewModel = ViewModelProvider(this).get(DiscoverViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_discover, container, false)
         root.findViewById<MaterialButton>(R.id.text_gallery).setOnClickListener {
-            GlobalScope.launch {
-                withContext(Dispatchers.IO) {
-                    PlacesAPI(homeViewModel).makeRequestByName("Lisbon Portugal")
-                }
-            }
+            homeViewModel.getGeoCities()
         }
         homeViewModel.picture.observe(viewLifecycleOwner) {
             root.findViewById<ImageView>(R.id.picture).setImageBitmap(it)
