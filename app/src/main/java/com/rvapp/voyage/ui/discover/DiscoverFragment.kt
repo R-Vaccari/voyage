@@ -9,11 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.button.MaterialButton
 import com.rvapp.voyage.R
-import com.rvapp.voyage.model.api.PlacesAPI
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import com.rvapp.voyage.model.entities.City
+import com.squareup.picasso.Picasso
 
 class DiscoverFragment : Fragment() {
     private lateinit var discoverViewModel: DiscoverViewModel
@@ -25,10 +22,13 @@ class DiscoverFragment : Fragment() {
     ): View? {
         discoverViewModel = ViewModelProvider(this).get(DiscoverViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_discover, container, false)
+        val city = City("Q597", "Lisbon", 0.0, 0.0, 500000, "Europe")
+        val picture = root.findViewById<ImageView>(R.id.picture)
         root.findViewById<MaterialButton>(R.id.text_gallery).setOnClickListener {
+            discoverViewModel.getWikiData(city)
         }
         discoverViewModel.picture.observe(viewLifecycleOwner) {
-            root.findViewById<ImageView>(R.id.picture).setImageBitmap(it)
+            Picasso.get().load(it).into(picture)
         }
         return root
     }

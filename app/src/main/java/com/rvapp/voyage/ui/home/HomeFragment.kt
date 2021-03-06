@@ -30,9 +30,6 @@ class HomeFragment : Fragment() {
         homeViewModel.cities.observe(viewLifecycleOwner, Observer {
             tvCities.text = it.toString()
         })
-        root.findViewById<MaterialButton>(R.id.import_bt).setOnClickListener {
-            GlobalScope.launch { homeViewModel.getCitiesByCountryCode(editText.text.toString()) }
-        }
         root.findViewById<MaterialButton>(R.id.discover_bt).setOnClickListener {
             it.findNavController().navigate(R.id.action_nav_home_to_nav_discover)
         }

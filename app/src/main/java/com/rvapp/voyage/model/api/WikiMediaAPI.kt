@@ -7,7 +7,7 @@ import okhttp3.Request
 
 class WikiMediaAPI {
 
-    fun requestEntity(entity: String) {
+    fun requestEntity(entity: String): String {
         val client = OkHttpClient()
         val request = Request.Builder()
             .url("https://www.wikidata.org/wiki/Special:EntityData/$entity.json")
@@ -17,6 +17,7 @@ class WikiMediaAPI {
         val response = client.newCall(request).execute()
         val data: String = response.body!!.string()
         response.close()
+        return data
     }
 
     fun requestEntityProperty(): String {
