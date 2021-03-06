@@ -16,19 +16,18 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class DiscoverFragment : Fragment() {
-    private lateinit var homeViewModel: DiscoverViewModel
+    private lateinit var discoverViewModel: DiscoverViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        homeViewModel = ViewModelProvider(this).get(DiscoverViewModel::class.java)
+        discoverViewModel = ViewModelProvider(this).get(DiscoverViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_discover, container, false)
         root.findViewById<MaterialButton>(R.id.text_gallery).setOnClickListener {
-            homeViewModel.getGeoCities()
         }
-        homeViewModel.picture.observe(viewLifecycleOwner) {
+        discoverViewModel.picture.observe(viewLifecycleOwner) {
             root.findViewById<ImageView>(R.id.picture).setImageBitmap(it)
         }
         return root

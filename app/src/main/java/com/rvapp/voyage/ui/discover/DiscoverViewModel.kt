@@ -43,11 +43,11 @@ class DiscoverViewModel : ViewModel() {
         }
     }
 
-    fun getWikiData() {
+    fun getWikiData(city: City) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 val api = WikiMediaAPI()
-                api.requestEntity()
+                api.requestEntity(city.wikiDataId)
             }
         }
     }

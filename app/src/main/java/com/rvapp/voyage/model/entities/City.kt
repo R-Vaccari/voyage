@@ -1,12 +1,14 @@
 package com.rvapp.voyage.model.entities
 
-data class City(val geonameid: Int?,
-                val name: String?,
-                val latitude: String?,
-                val longitude: String?,
-                val population: Int?,
-                val timezone: String?,
-                val picture: String?) {
+data class City(val wikiDataId: String,
+                val name: String,
+                val latitude: Double,
+                val longitude: Double,
+                val population: Int,
+                val timezone: String) {
+
+    lateinit var description: String
+    lateinit var photo_url: String
 
     override fun toString(): String {
         return "[$name, $population]"
