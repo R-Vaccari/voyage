@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 
-class DiscoverViewModel : ViewModel() {
+class DiscoverSharedViewModel : ViewModel() {
     val api = PlacesAPI()
 
     private val _text = MutableLiveData<String>()
@@ -59,8 +59,7 @@ class DiscoverViewModel : ViewModel() {
     fun getGeoCities() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                val api = GeoDBAPI()
-                api.requestEntity()
+                val api = GeoDBAPI().getCities("PT", "10000")
             }
         }
     }

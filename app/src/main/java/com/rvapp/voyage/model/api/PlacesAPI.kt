@@ -2,9 +2,6 @@ package com.rvapp.voyage.model.api
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import com.rvapp.voyage.ui.discover.DiscoverViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject

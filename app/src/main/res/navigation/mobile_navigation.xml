@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_nav_home_to_nav_discover"
-            app:destination="@id/nav_discover" />
+            app:destination="@id/discover_nested_graph" />
     </fragment>
 
     <fragment
@@ -27,9 +27,21 @@
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
 
-    <fragment
-        android:id="@+id/nav_discover"
-        android:name="com.rvapp.voyage.ui.discover.DiscoverFragment"
-        android:label="@string/menu_discover"
-        tools:layout="@layout/fragment_blank" />
+    <navigation android:id="@+id/discover_nested_graph"
+        app:startDestination="@id/nav_discover">
+        <fragment
+            android:id="@+id/nav_discover"
+            android:name="com.rvapp.voyage.ui.discover.DiscoverFragment"
+            android:label="@string/menu_discover"
+            tools:layout="@layout/fragment_blank">
+            <action
+                android:id="@+id/action_nav_discover_to_cityFragment"
+                app:destination="@id/cityFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/cityFragment"
+            android:name="com.rvapp.voyage.ui.discover.cities.CityFragment"
+            android:label="fragment_city"
+            tools:layout="@layout/fragment_city" />
+    </navigation>
 </navigation>
