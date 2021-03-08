@@ -40,25 +40,10 @@ class DiscoverSharedViewModel : ViewModel() {
 
      */
 
-    fun getWikiData(city: City) {
-        viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                val api = WikiMediaAPI()
-                val jsonObject: JSONObject = JSONObject(api.requestEntity(city.wikiDataId)).getJSONObject("entities").get(city.wikiDataId) as JSONObject
-                city.description = jsonObject.getJSONObject("descriptions").getJSONObject("en").optString("value")
-                city.photo_url = jsonObject.getJSONObject("claims")
-                        .getJSONArray("P948")
-                        .getJSONObject(0)
-                        .getJSONObject("mainsnak")
-                        .getJSONObject("datavalue")
-                        .optString("value")
-                        .replace(" ", "_")
-                val mdHash = HashHelper.md5(city.photo_url)
-                val a = mdHash[0]
-                val b = mdHash[1]
-                _picture.postValue("https://upload.wikimedia.org/wikipedia/commons/$a/$a$b/${city.photo_url}")
-            }
-        }
+    suspend fun getWikiData(city: City) {
+        val api = WikiMediaAPI()
+        val city = api.requestEntity(city.wikiDataId)
+
     }
 
     fun getGeoCities() {
@@ -66,6 +51,7 @@ class DiscoverSharedViewModel : ViewModel() {
             withContext(Dispatchers.IO) {
                 val response = GeoDBAPI().getCities("PT", "10000")
                 _cities.postValue(response)
+                val wikiData = getWikiData(response[0])
             }
         }
     }
