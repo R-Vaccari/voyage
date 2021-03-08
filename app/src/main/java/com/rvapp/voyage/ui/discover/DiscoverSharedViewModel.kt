@@ -51,7 +51,6 @@ class DiscoverSharedViewModel : ViewModel() {
             withContext(Dispatchers.IO) {
                 val response = GeoDBAPI().getCities("PT", "10000")
                 _cities.postValue(response)
-                val wikiData = getWikiData(response[0])
             }
         }
     }

@@ -26,9 +26,7 @@ class CityFragment : Fragment() {
         binding.city = discoverViewModel.cities.value?.get(0)
 
         val banner = root.findViewById<ImageView>(R.id.city_banner)
-        discoverViewModel.picture.observe(viewLifecycleOwner) {
-            Picasso.get().load(discoverViewModel.picture.value).into(banner)
-        }
+        Picasso.get().load(discoverViewModel.picture.value).into(banner)
         return root
     }
 }

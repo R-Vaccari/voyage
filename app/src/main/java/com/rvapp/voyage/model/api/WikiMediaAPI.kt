@@ -16,7 +16,8 @@ import retrofit2.http.Path
 import retrofit2.http.Url
 
 class WikiMediaAPI {
-    private val gson: Gson = GsonBuilder().registerTypeAdapter(WikiMediaData::class.java, WikiMediaDeserializer())
+    private val deserializer = WikiMediaDeserializer()
+    private val gson: Gson = GsonBuilder().registerTypeAdapter(WikiMediaData::class.java, deserializer)
             .create()
     private val retrofit = Retrofit.Builder().addConverterFactory(GsonConverterFactory.create(gson))
             .baseUrl("https://www.wikidata.org/wiki/Special:EntityData/")
@@ -24,6 +25,7 @@ class WikiMediaAPI {
     private val service = retrofit.create(WikiMediaService::class.java)
 
     fun requestEntity(entity: String): WikiMediaData? {
+        deserializer.wikiId = entity
         val call = service.getEntity("https://www.wikidata.org/wiki/Special:EntityData/$entity.json")
         val response = call.execute()
         return response.body()
