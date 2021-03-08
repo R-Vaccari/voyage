@@ -15,17 +15,20 @@ import kotlinx.coroutines.withContext
 import org.json.JSONObject
 
 class DiscoverSharedViewModel : ViewModel() {
-    val api = PlacesAPI()
 
     private val _text = MutableLiveData<String>()
     val text: LiveData<String> = _text
 
-    private val _cities = MutableLiveData<Int>()
-    val cities: LiveData<Int> = _cities
+    private val _cities = MutableLiveData<List<City>>()
+    val cities: LiveData<List<City>> = _cities
+
+    private val _currentCity = MutableLiveData<City>()
+    val currentCity: LiveData<City> = _currentCity
 
     private val _picture = MutableLiveData<String>()
     val picture: LiveData<String> = _picture
 
+    /*
     fun getCityPicture(placeName: String) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
@@ -34,6 +37,8 @@ class DiscoverSharedViewModel : ViewModel() {
             }
         }
     }
+
+     */
 
     fun getWikiData(city: City) {
         viewModelScope.launch {
@@ -59,7 +64,8 @@ class DiscoverSharedViewModel : ViewModel() {
     fun getGeoCities() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                val api = GeoDBAPI().getCities("PT", "10000")
+                val response = GeoDBAPI().getCities("PT", "10000")
+                _cities.postValue(response)
             }
         }
     }
