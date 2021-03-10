@@ -5,17 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rvapp.voyage.model.api.GeoDBAPI
-import com.rvapp.voyage.model.api.PlacesAPI
 import com.rvapp.voyage.model.api.WikiMediaAPI
 import com.rvapp.voyage.model.entities.City
-import com.rvapp.voyage.util.HashHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.json.JSONObject
 
 class DiscoverSharedViewModel : ViewModel() {
-
     private val _text = MutableLiveData<String>()
     val text: LiveData<String> = _text
 
@@ -28,22 +24,16 @@ class DiscoverSharedViewModel : ViewModel() {
     private val _picture = MutableLiveData<String>()
     val picture: LiveData<String> = _picture
 
-    /*
-    fun getCityPicture(placeName: String) {
+    fun getWikiData(city: City) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                val photoReference = api.makeRequestByName(placeName)
-                val bitmap = api.requestPicture(photoReference)
+                val api = WikiMediaAPI()
+                val data = api.requestEntity(city.wikiDataId)
+                city.photo_url = data.cityPhoto
+                city.description = data.cityDescription
+                _currentCity.postValue(city)
             }
         }
-    }
-
-     */
-
-    suspend fun getWikiData(city: City) {
-        val api = WikiMediaAPI()
-        val city = api.requestEntity(city.wikiDataId)
-
     }
 
     fun getGeoCities() {
