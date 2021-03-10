@@ -8,6 +8,7 @@ import com.rvapp.voyage.model.api.GeoDBAPI
 import com.rvapp.voyage.model.api.WikiMediaAPI
 import com.rvapp.voyage.model.entities.City
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -31,6 +32,7 @@ class DiscoverSharedViewModel : ViewModel() {
                 val data = api.requestEntity(city.wikiDataId)
                 city.photo_url = data.cityPhoto
                 city.description = data.cityDescription
+                city.population = data.population
                 _currentCity.postValue(city)
             }
         }
@@ -41,6 +43,8 @@ class DiscoverSharedViewModel : ViewModel() {
             withContext(Dispatchers.IO) {
                 val response = GeoDBAPI().getCities("PT", "10000")
                 _cities.postValue(response)
+                delay(500)
+                for (city in _cities.value!!) getWikiData(city)
             }
         }
     }

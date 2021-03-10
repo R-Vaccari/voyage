@@ -4,7 +4,6 @@ import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
-import java.lang.NullPointerException
 import java.lang.reflect.Type
 
 class WikiMediaDeserializer: JsonDeserializer<WikiMediaData> {
@@ -15,32 +14,43 @@ class WikiMediaDeserializer: JsonDeserializer<WikiMediaData> {
                 .getAsJsonObject("entities")
                 .getAsJsonObject(wikiId)
 
-
         val description: String = entityObject
                 .getAsJsonObject("descriptions")
                 .getAsJsonObject("en")
                 .get("value").asString
 
-        var cityPhoto: String
-        try {
-            cityPhoto = entityObject
-                    .getAsJsonObject("claims")
-                    .getAsJsonArray("P948")
-                    .get(0).asJsonObject
-                    .getAsJsonObject("mainsnak")
-                    .getAsJsonObject("datavalue")
-                    .get("value").asString
-                    .replace(" ", "_")
-        } catch (e: NullPointerException) {
-            cityPhoto = entityObject
-                    .getAsJsonObject("claims")
-                    .getAsJsonArray("P18")
-                    .get(0).asJsonObject
-                    .getAsJsonObject("mainsnak")
-                    .getAsJsonObject("datavalue")
-                    .get("value").asString
-                    .replace(" ", "_")
+        val population: String = entityObject
+                .getAsJsonObject("claims")
+                .getAsJsonArray("1082")
+                .get(0).asJsonObject
+                .getAsJsonObject("mainsnak")
+                .getAsJsonObject("datavalue")
+                .getAsJsonObject("value")
+                .get("amound").asString.removePrefix("+")
+
+        val p948: String? = entityObject
+                .getAsJsonObject("claims")
+                .getAsJsonArray("P948")
+                .get(0).asJsonObject
+                .getAsJsonObject("mainsnak")
+                .getAsJsonObject("datavalue")
+                .get("value").asString
+                .replace(" ", "_")
+
+        val p18: String? = entityObject
+                .getAsJsonObject("claims")
+                .getAsJsonArray("P948")
+                .get(0).asJsonObject
+                .getAsJsonObject("mainsnak")
+                .getAsJsonObject("datavalue")
+                .get("value").asString
+                .replace(" ", "_")
+
+        var cityPhoto: String = "none"
+        when {
+            p948 != null -> cityPhoto = p948
+            p18 != null -> cityPhoto = p18
         }
-        return WikiMediaData(description, cityPhoto)
+        return WikiMediaData(description, cityPhoto, population.toInt())
     }
 }

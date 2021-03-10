@@ -29,10 +29,13 @@ class WikiMediaAPI {
     }
 
     private fun setPhotoUrl(cityPhoto: String): String {
-        val hash = HashHelper.md5(cityPhoto)
-        val a = hash[0]
-        val b = hash[1]
-        return "https://upload.wikimedia.org/wikipedia/commons/$a/$a$b/${cityPhoto.replace(" ", "_")}"
+        if (cityPhoto != "none") {
+            val hash = HashHelper.md5(cityPhoto)
+            val a = hash[0]
+            val b = hash[1]
+            return "https://upload.wikimedia.org/wikipedia/commons/$a/$a$b/${cityPhoto.replace(" ", "_")}"
+        }
+        return "none"
     }
 
     interface WikiMediaService {
