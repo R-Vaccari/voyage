@@ -15,8 +15,8 @@ class DiscoverSharedViewModel : ViewModel() {
     private val _text = MutableLiveData<String>()
     val text: LiveData<String> = _text
 
-    private val _cities = MutableLiveData<List<City>>()
-    val cities: LiveData<List<City>> = _cities
+    private val _cities = MutableLiveData<LinkedHashSet<City>>()
+    val cities: LiveData<LinkedHashSet<City>> = _cities
 
     private val _currentCity = MutableLiveData<City>()
     val currentCity: LiveData<City> = _currentCity

@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.rvapp.voyage.R
@@ -23,7 +22,7 @@ class CityFragment : Fragment() {
     ): View? {
         val binding = FragmentCityBinding.inflate(inflater, container, false)
         val root = binding.root
-        binding.city = discoverViewModel.cities.value?.get(0)
+
 
         val banner = root.findViewById<ImageView>(R.id.city_banner)
         Picasso.get().load(discoverViewModel.picture.value).into(banner)

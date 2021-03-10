@@ -16,7 +16,7 @@ class GeoDBAPI {
             .build()
     private val service = retrofit.create(GeoDBService::class.java)
 
-    fun getCities(countryIds: String, minPop: String): List<City> {
+    fun getCities(countryIds: String, minPop: String): LinkedHashSet<City> {
         val call = service.getCities(countryIds, minPop)
         val response = call.execute()
         return response.body()!!.cities

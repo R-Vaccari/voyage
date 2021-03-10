@@ -2,13 +2,14 @@ package com.rvapp.voyage.ui.discover.cities
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rvapp.voyage.databinding.CardCityBinding
 import com.rvapp.voyage.model.entities.City
 
-class CityListAdapter(val context: Context): RecyclerView.Adapter<CityListAdapter.ViewHolder>() {
+class CityListAdapter(val context: Context,
+                      val cities: LinkedHashSet<City>
+                      ): RecyclerView.Adapter<CityListAdapter.ViewHolder>() {
 
 
     open class ViewHolder(private val binding: CardCityBinding): RecyclerView.ViewHolder(binding.root) {
@@ -22,11 +23,7 @@ class CityListAdapter(val context: Context): RecyclerView.Adapter<CityListAdapte
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
-    }
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(cities.elementAt(position))
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount(): Int = cities.size
 }

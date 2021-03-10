@@ -25,7 +25,7 @@ class DiscoverFragment : Fragment() {
             discoverViewModel.getGeoCities()
         }
         root.findViewById<MaterialButton>(R.id.advance_bt).setOnClickListener {
-            findNavController().navigate(R.id.action_nav_discover_to_cityFragment)
+            findNavController().navigate(R.id.action_nav_discover_to_nav_city_list)
         }
         return root
     }

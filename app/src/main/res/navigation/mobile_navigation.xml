@@ -35,11 +35,19 @@
             android:label="@string/menu_discover"
             tools:layout="@layout/fragment_blank">
             <action
-                android:id="@+id/action_nav_discover_to_cityFragment"
-                app:destination="@id/cityFragment" />
+                android:id="@+id/action_nav_discover_to_nav_city_list"
+                app:destination="@id/nav_city_list" />
+        </fragment>
+        <fragment android:id="@+id/nav_city_list"
+            android:name="com.rvapp.voyage.ui.discover.cities.CityListFragment"
+            android:label="City List"
+            tools:layout="@layout/fragment_list_city" >
+            <action
+                android:id="@+id/action_nav_city_list_to_nav_city"
+                app:destination="@id/nav_city" />
         </fragment>
         <fragment
-            android:id="@+id/cityFragment"
+            android:id="@+id/nav_city"
             android:name="com.rvapp.voyage.ui.discover.cities.CityFragment"
             android:label="fragment_city"
             tools:layout="@layout/fragment_city" />
