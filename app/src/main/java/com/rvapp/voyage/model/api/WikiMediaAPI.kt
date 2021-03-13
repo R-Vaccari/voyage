@@ -25,7 +25,7 @@ class WikiMediaAPI {
         deserializer.wikiId = entity
         val call = service.getEntity("https://www.wikidata.org/wiki/Special:EntityData/$entity.json")
         val data = call.execute().body()
-        return WikiMediaData(data!!.cityDescription, setPhotoUrl(data.cityPhoto))
+        return WikiMediaData(data!!.cityDescription, setPhotoUrl(data.cityPhoto), data.population)
     }
 
     private fun setPhotoUrl(cityPhoto: String): String {
