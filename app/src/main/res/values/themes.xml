@@ -22,7 +22,9 @@
 
     <style name="Theme.Voyage.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.Voyage.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.Voyage.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" >
+        <item name="android:backgroundTint">@android:color/transparent</item>
+    </style>
 
     <style name="Style.Voyage.Button.Light" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/secondary</item>
