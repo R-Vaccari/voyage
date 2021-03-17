@@ -20,7 +20,7 @@ class WikiMediaDeserializer: JsonDeserializer<WikiMediaData> {
                 .getAsJsonObject("en")
                 .get("value").asString
 
-        var population: String
+        var population: Int
         try {
             population = entityObject
                     .getAsJsonObject("claims")
@@ -30,9 +30,8 @@ class WikiMediaDeserializer: JsonDeserializer<WikiMediaData> {
                     .getAsJsonObject("datavalue")
                     .getAsJsonObject("value")
                     .get("amound").asString.removePrefix("+")
-        } catch (e: NullPointerException) {
-            population = "none"
-        }
+                    .toInt()
+        } catch (e: NullPointerException) { population = 0 }
 
         var p948: String
         try {
@@ -44,9 +43,7 @@ class WikiMediaDeserializer: JsonDeserializer<WikiMediaData> {
                     .getAsJsonObject("datavalue")
                     .get("value").asString
                     .replace(" ", "_")
-        } catch (e: NullPointerException) {
-            p948 = "none"
-        }
+        } catch (e: NullPointerException) { p948 = "none" }
 
         var p18: String
         try {
@@ -58,13 +55,11 @@ class WikiMediaDeserializer: JsonDeserializer<WikiMediaData> {
                     .getAsJsonObject("datavalue")
                     .get("value").asString
                     .replace(" ", "_")
-        }  catch (e: NullPointerException) {
-            p18 = "none"
-        }
+        }  catch (e: NullPointerException) { p18 = "none" }
 
-        var cityPhoto: String = "none"
+        var cityPhoto = "none"
         if (p948 != "none") cityPhoto = p948
         else if (p18 != "none") cityPhoto = p18
-        return WikiMediaData(description, cityPhoto, population.toInt())
+        return WikiMediaData(description, cityPhoto, population)
     }
 }
