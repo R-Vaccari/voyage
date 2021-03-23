@@ -29,7 +29,7 @@ class WikiMediaAPI {
 
     fun requestEntity(entity: String): WikiMediaData {
         deserializer.wikiId = entity
-        val call = service.getEntity("https://www.wikidata.org/wiki/Special:EntityData/$entity.json")
+        val call = service.getEntity("https://www.wikidata.org/wiki/Special:EntityData/$entity.json?flavor=dump")
         val data = call.execute().body()
         return WikiMediaData(data!!.cityDescription, setPhotoUrl(data.cityPhoto), data.population, data.elevation)
     }

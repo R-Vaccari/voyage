@@ -34,9 +34,7 @@ class DiscoverSharedViewModel : ViewModel() {
         }
     }
 
-    fun getWikiData(city: City) {
-        viewModelScope.launch {
-            withContext(Dispatchers.IO) {
+    private fun getWikiData(city: City) {
                 val api = WikiMediaAPI()
                 val data = api.requestEntity(city.wikiDataId)
                 city.photo_url = data.cityPhoto
@@ -44,8 +42,6 @@ class DiscoverSharedViewModel : ViewModel() {
                 city.population = data.population
                 city.elevation = data.elevation
                 _currentCity.postValue(city)
-            }
-        }
     }
 
     fun getGeoCities() {

@@ -11,8 +11,8 @@ data class City(@SerializedName("wikiDataId") val wikiDataId: String,
 
     lateinit var description: String
     lateinit var photo_url: String
-    var population by Delegates.notNull<Int>()
-    var elevation by Delegates.notNull<Int>()
+    var population: Int = -100
+    var elevation: Int = -100
 
     override fun toString(): String {
         return "[$name]"

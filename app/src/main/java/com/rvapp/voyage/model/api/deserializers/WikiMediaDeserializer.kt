@@ -24,14 +24,14 @@ class WikiMediaDeserializer: JsonDeserializer<WikiMediaData> {
         try {
             population = entityObject
                     .getAsJsonObject("claims")
-                    .getAsJsonArray("1082")
+                    .getAsJsonArray("P1082")
                     .get(0).asJsonObject
                     .getAsJsonObject("mainsnak")
                     .getAsJsonObject("datavalue")
                     .getAsJsonObject("value")
-                    .get("amound").asString.removePrefix("+")
+                    .get("amount").asString.removePrefix("+")
                     .toInt()
-        } catch (e: NullPointerException) { population = 0 }
+        } catch (e: NullPointerException) { population = -100 }
 
         var p948: String
         try {
@@ -49,7 +49,7 @@ class WikiMediaDeserializer: JsonDeserializer<WikiMediaData> {
         try {
             p18 = entityObject
                     .getAsJsonObject("claims")
-                    .getAsJsonArray("P948")
+                    .getAsJsonArray("P18")
                     .get(0).asJsonObject
                     .getAsJsonObject("mainsnak")
                     .getAsJsonObject("datavalue")
