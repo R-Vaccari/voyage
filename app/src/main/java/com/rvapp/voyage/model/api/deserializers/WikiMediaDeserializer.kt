@@ -1,10 +1,10 @@
-package com.rvapp.voyage.model.entities.wikimedia
+package com.rvapp.voyage.model.api.deserializers
 
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
-import java.lang.NullPointerException
+import com.rvapp.voyage.model.entities.wikimedia.WikiMediaData
 import java.lang.reflect.Type
 
 class WikiMediaDeserializer: JsonDeserializer<WikiMediaData> {
@@ -57,9 +57,21 @@ class WikiMediaDeserializer: JsonDeserializer<WikiMediaData> {
                     .replace(" ", "_")
         }  catch (e: NullPointerException) { p18 = "none" }
 
+        var elevation: Int
+        try {
+            elevation = entityObject
+                .getAsJsonObject("claims")
+                .getAsJsonArray("P3044")
+                .get(0).asJsonObject
+                .getAsJsonObject("mainsnak")
+                .getAsJsonObject("datavalue")
+                .getAsJsonObject("value")
+                .get("amount").asInt
+        } catch (e: NullPointerException) { elevation = -100 }
+
         var cityPhoto = "none"
         if (p948 != "none") cityPhoto = p948
         else if (p18 != "none") cityPhoto = p18
-        return WikiMediaData(description, cityPhoto, population)
+        return WikiMediaData(description, cityPhoto, population, elevation)
     }
 }

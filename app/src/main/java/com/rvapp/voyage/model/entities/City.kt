@@ -10,8 +10,9 @@ data class City(@SerializedName("wikiDataId") val wikiDataId: String,
                 @SerializedName("longitude") val longitude: Double): Serializable {
 
     lateinit var description: String
-    var population by Delegates.notNull<Int>()
     lateinit var photo_url: String
+    var population by Delegates.notNull<Int>()
+    var elevation by Delegates.notNull<Int>()
 
     override fun toString(): String {
         return "[$name]"

@@ -25,6 +25,15 @@ class DiscoverSharedViewModel : ViewModel() {
     private val _picture = MutableLiveData<String>()
     val picture: LiveData<String> = _picture
 
+    fun getArticle() {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                val api = WikiMediaAPI()
+                val result = api.requestArticle()
+            }
+        }
+    }
+
     fun getWikiData(city: City) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
@@ -33,6 +42,7 @@ class DiscoverSharedViewModel : ViewModel() {
                 city.photo_url = data.cityPhoto
                 city.description = data.cityDescription
                 city.population = data.population
+                city.elevation = data.elevation
                 _currentCity.postValue(city)
             }
         }

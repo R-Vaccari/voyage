@@ -4,4 +4,6 @@ import java.io.Serializable
 
 data class WikiMediaData(val cityDescription: String,
                         val cityPhoto: String,
-                        val population: Int): Serializable
+                        val population: Int,
+                        val elevation: Int
+                        ): Serializable

@@ -22,7 +22,7 @@ class DiscoverFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_discover, container, false)
         root.findViewById<MaterialButton>(R.id.text_gallery).setOnClickListener {
-            discoverViewModel.getGeoCities()
+            discoverViewModel.getArticle()
         }
         root.findViewById<MaterialButton>(R.id.advance_bt).setOnClickListener {
             findNavController().navigate(R.id.action_nav_discover_to_nav_city_list)
