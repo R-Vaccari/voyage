@@ -13,6 +13,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class DiscoverSharedViewModel : ViewModel() {
+    private val _ready = MutableLiveData(false)
+    val ready: LiveData<Boolean> = _ready
+
     private val _text = MutableLiveData<String>()
     val text: LiveData<String> = _text
 
@@ -35,22 +38,23 @@ class DiscoverSharedViewModel : ViewModel() {
     }
 
     private fun getWikiData(city: City) {
-                val api = WikiMediaAPI()
-                val data = api.requestEntity(city.wikiDataId)
-                city.photo_url = data.cityPhoto
-                city.description = data.cityDescription
-                city.population = data.population
-                city.elevation = data.elevation
-                _currentCity.postValue(city)
+        val api = WikiMediaAPI()
+        val data = api.requestEntity(city.wikiDataId)
+        city.photo_url = data.cityPhoto
+        city.description = data.cityDescription
+        city.population = data.population
+        city.elevation = data.elevation
+        _currentCity.postValue(city)
     }
 
     fun getGeoCities() {
+        _ready.value = false
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 val response = GeoDBAPI().getCities("PT", "10000")
+                for (city in response) getWikiData(city)
                 _cities.postValue(response)
-                delay(500)
-                for (city in _cities.value!!) getWikiData(city)
+                _ready.postValue(true)
             }
         }
     }

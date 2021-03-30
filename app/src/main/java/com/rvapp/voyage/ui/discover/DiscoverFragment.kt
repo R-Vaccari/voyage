@@ -24,8 +24,13 @@ class DiscoverFragment : Fragment() {
         root.findViewById<MaterialButton>(R.id.text_gallery).setOnClickListener {
             discoverViewModel.getGeoCities()
         }
-        root.findViewById<MaterialButton>(R.id.advance_bt).setOnClickListener {
+        val btNext: MaterialButton = root.findViewById(R.id.advance_bt)
+        btNext.setOnClickListener {
             findNavController().navigate(R.id.action_nav_discover_to_nav_city_list)
+        }
+
+        discoverViewModel.ready.observe(viewLifecycleOwner) {
+            btNext.isEnabled = it
         }
         return root
     }

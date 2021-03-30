@@ -1,34 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ui.gallery.GalleryFragment">
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/text_gallery"
-        style="@style/Style.Voyage.Button.Outlined"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:text="Importar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginHorizontal="8dp">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/advance_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Avançar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_gallery" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/discover_toggle_pop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Style.Voyage.Button.Outlined"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/discover_bt_population_min"
+                android:text="@string/pop_min"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Style.Voyage.Button.Outlined"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/discover_bt_population_mid"
+                android:text="@string/pop_mid"
+                android:insetRight="8dp"
+                android:insetLeft="8dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/discover_bt_population_min"
+                app:layout_constraintEnd_toStartOf="@id/discover_bt_population_max"/>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Style.Voyage.Button.Outlined"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/discover_bt_population_max"
+                android:text="@string/pop_max"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/discover_toggle_elevation"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/discover_toggle_pop"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Style.Voyage.Button.Outlined"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/discover_bt_elevation_min"
+                android:text="@string/elevation_min"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Style.Voyage.Button.Outlined"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/discover_bt_elevation_mid"
+                android:text="@string/elevation_mid"
+                android:insetRight="8dp"
+                android:insetLeft="8dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/discover_bt_population_min"
+                app:layout_constraintEnd_toStartOf="@id/discover_bt_population_max"/>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Style.Voyage.Button.Outlined"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/discover_bt_elevation_max"
+                android:text="@string/elevation_max"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/text_gallery"
+            style="@style/Style.Voyage.Button.Outlined"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="Importar"
+            app:layout_constraintBottom_toBottomOf="@+id/advance_bt"
+            app:layout_constraintEnd_toStartOf="@+id/advance_bt"
+            app:layout_constraintTop_toTopOf="@+id/advance_bt" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/advance_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Avançar"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@id/discover_toggle_elevation"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

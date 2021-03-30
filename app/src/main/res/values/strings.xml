@@ -11,6 +11,16 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_discover">Discover</string>
+
+    <string name="pop_min">Countryside</string>
+    <string name="pop_mid">City</string>
+    <string name="pop_max">Metropolis</string>
+
+    <string name="elevation_min">Sea Level</string>
+    <string name="elevation_mid">Hills</string>
+    <string name="elevation_max">Mountains</string>
+
+    <string name="loading_text">Loading…</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
