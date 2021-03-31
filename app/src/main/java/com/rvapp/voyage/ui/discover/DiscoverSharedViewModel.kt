@@ -4,15 +4,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.rvapp.voyage.model.api.DiscoverFilter
 import com.rvapp.voyage.model.api.GeoDBAPI
 import com.rvapp.voyage.model.api.WikiMediaAPI
 import com.rvapp.voyage.model.entities.City
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class DiscoverSharedViewModel : ViewModel() {
+    var filter: DiscoverFilter = DiscoverFilter()
+
     private val _ready = MutableLiveData(false)
     val ready: LiveData<Boolean> = _ready
 
@@ -57,5 +59,9 @@ class DiscoverSharedViewModel : ViewModel() {
                 _ready.postValue(true)
             }
         }
+    }
+
+    fun setReady(value: Boolean) {
+        _ready.value = value
     }
 }

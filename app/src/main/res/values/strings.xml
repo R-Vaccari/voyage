@@ -20,6 +20,10 @@
     <string name="elevation_mid">Hills</string>
     <string name="elevation_max">Mountains</string>
 
+    <string name="experience_mediterranean">Mediterranean</string>
+    <string name="experience_black_sea">Black Sea</string>
+    <string name="experience_north">Northern Lights</string>
+
     <string name="loading_text">Loading…</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
