@@ -60,8 +60,4 @@ class DiscoverSharedViewModel : ViewModel() {
             }
         }
     }
-
-    fun setReady(value: Boolean) {
-        _ready.value = value
-    }
 }

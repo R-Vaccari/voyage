@@ -29,11 +29,13 @@
     <style name="Style.Voyage.Button.Light" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/secondary</item>
         <item name="android:textColor">@color/primary</item>
+        <item name="android:elevation">8dp</item>
     </style>
 
     <style name="Style.Voyage.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="backgroundTint">@color/light_grey</item>
-        <item name="android:textColor">@color/primary</item>
+        <item name="backgroundTint">@color/states_button_outlined</item>
+        <item name="android:textColor">@color/states_button_text_outlined</item>
+        <item name="strokeColor">@color/states_button_outlined</item>
     </style>
 
 </resources>

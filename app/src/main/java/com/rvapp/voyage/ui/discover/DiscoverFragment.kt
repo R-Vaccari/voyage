@@ -25,6 +25,7 @@ class DiscoverFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_discover, container, false)
+        disableLocks()
         groupListeners(root)
         initButtons(root)
         return root
@@ -64,7 +65,6 @@ class DiscoverFragment : Fragment() {
             btNext.isEnabled = it
         }
 
-
         root.findViewById<MaterialButton>(R.id.discover_bt_experience_max).addOnCheckedChangeListener { materialButton: MaterialButton, b: Boolean ->
             discoverViewModel.filter.experience = "North"
         }
@@ -74,6 +74,12 @@ class DiscoverFragment : Fragment() {
         root.findViewById<MaterialButton>(R.id.discover_bt_elevation_max).addOnCheckedChangeListener { materialButton: MaterialButton, b: Boolean ->
             discoverViewModel.filter.elevation = 1000
         }
+    }
+
+    private fun disableLocks() {
+        lock01 = false
+        lock02 = false
+        lock03 = false
     }
 }
 
