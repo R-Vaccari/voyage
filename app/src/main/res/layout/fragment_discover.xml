@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/discover_scroll_experience"
-            android:scrollbarAlwaysDrawHorizontalTrack="false"
+            android:scrollbars="none"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/discover_toggle_experience"
                 android:gravity="center"
-                android:layout_marginHorizontal="4dp"
+                android:layout_marginHorizontal="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
@@ -36,7 +36,7 @@
                     android:id="@+id/discover_bt_experience_min"
                     android:text="@string/experience_mediterranean"
                     android:drawableTop="@drawable/ic_baseline_beach_access_24"
-                    android:elevation="4dp"
+                    android:insetLeft="4dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"/>
 
@@ -49,7 +49,6 @@
                     android:insetRight="8dp"
                     android:insetLeft="8dp"
                     android:drawableTop="@drawable/ic_baseline_sailing_24"
-                    android:elevation="4dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toEndOf="@id/discover_bt_population_min"
                     app:layout_constraintEnd_toStartOf="@id/discover_bt_population_max"/>
@@ -61,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/experience_north"
                     android:drawableTop="@drawable/ic_baseline_ac_unit_24"
-                    android:elevation="4dp"
+                    android:insetRight="4dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -82,7 +81,7 @@
             android:id="@+id/discover_toggle_pop"
             android:layout_marginTop="24dp"
             android:gravity="center"
-            android:layout_marginHorizontal="4dp"
+            android:layout_marginHorizontal="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/discover_scroll_experience"
             app:layout_constraintEnd_toEndOf="parent">
@@ -94,7 +93,7 @@
                 android:id="@+id/discover_bt_population_min"
                 android:text="@string/pop_min"
                 android:drawableTop="@drawable/ic_baseline_cottage_24"
-                android:elevation="4dp"
+                android:insetLeft="4dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
 
@@ -107,7 +106,6 @@
                 android:insetRight="8dp"
                 android:insetLeft="8dp"
                 android:drawableTop="@drawable/ic_baseline_location_city_24"
-                android:elevation="4dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toEndOf="@id/discover_bt_population_min"
                 app:layout_constraintEnd_toStartOf="@id/discover_bt_population_max"/>
@@ -119,7 +117,7 @@
                 android:id="@+id/discover_bt_population_max"
                 android:text="@string/pop_max"
                 android:drawableTop="@drawable/ic_baseline_apartment_24"
-                android:elevation="4dp"
+                android:insetRight="4dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -139,7 +137,7 @@
             android:id="@+id/discover_toggle_elevation"
             android:layout_marginTop="24dp"
             android:gravity="center"
-            android:layout_marginHorizontal="4dp"
+            android:layout_marginHorizontal="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/discover_toggle_pop"
             app:layout_constraintEnd_toEndOf="parent">
@@ -151,7 +149,7 @@
                 android:id="@+id/discover_bt_elevation_min"
                 android:text="@string/elevation_min"
                 android:drawableTop="@drawable/ic_baseline_pool_24"
-                android:elevation="4dp"
+                android:insetLeft="4dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
 
@@ -164,7 +162,6 @@
                 android:insetRight="8dp"
                 android:insetLeft="8dp"
                 android:drawableTop="@drawable/ic_baseline_hiking_24"
-                android:elevation="4dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toEndOf="@id/discover_bt_population_min"
                 app:layout_constraintEnd_toStartOf="@id/discover_bt_population_max"/>
@@ -176,7 +173,7 @@
                 android:id="@+id/discover_bt_elevation_max"
                 android:text="@string/elevation_max"
                 android:drawableTop="@drawable/ic_baseline_terrain_24"
-                android:elevation="4dp"
+                android:insetRight="4dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -184,12 +181,11 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/text_gallery"
-            style="@style/Style.Voyage.Button.Outlined"
+            style="@style/Style.Voyage.Button.Outlined.NoBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:text="Import"
-            android:elevation="4dp"
             app:layout_constraintBottom_toBottomOf="@+id/advance_bt"
             app:layout_constraintEnd_toStartOf="@+id/advance_bt"
             app:layout_constraintTop_toTopOf="@+id/advance_bt" />

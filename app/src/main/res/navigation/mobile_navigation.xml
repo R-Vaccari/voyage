@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_nav_home_to_nav_discover"
-            app:destination="@id/discover_nested_graph" />
+            app:destination="@id/nav_discover"
+            app:enterAnim="@animator/nav_default_enter_anim"
+            app:exitAnim="@animator/nav_default_exit_anim"
+            app:popEnterAnim="@animator/nav_default_pop_enter_anim"
+            app:popExitAnim="@animator/nav_default_pop_exit_anim"/>
     </fragment>
 
     <fragment
@@ -27,29 +31,34 @@
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
 
-    <navigation android:id="@+id/discover_nested_graph"
-        app:startDestination="@id/nav_discover">
-        <fragment
-            android:id="@+id/nav_discover"
-            android:name="com.rvapp.voyage.ui.discover.DiscoverFragment"
-            android:label="@string/menu_discover"
-            tools:layout="@layout/fragment_blank">
-            <action
-                android:id="@+id/action_nav_discover_to_nav_city_list"
-                app:destination="@id/nav_city_list" />
-        </fragment>
-        <fragment android:id="@+id/nav_city_list"
-            android:name="com.rvapp.voyage.ui.discover.cities.CityListFragment"
-            android:label="City List"
-            tools:layout="@layout/fragment_list_city" >
-            <action
-                android:id="@+id/action_nav_city_list_to_nav_city"
-                app:destination="@id/nav_city" />
-        </fragment>
-        <fragment
-            android:id="@+id/nav_city"
-            android:name="com.rvapp.voyage.ui.discover.cities.CityFragment"
-            android:label="fragment_city"
-            tools:layout="@layout/fragment_city" />
-    </navigation>
+    <fragment
+        android:id="@+id/nav_discover"
+        android:name="com.rvapp.voyage.ui.discover.DiscoverFragment"
+        android:label="@string/menu_discover"
+        tools:layout="@layout/fragment_blank">
+        <action
+            android:id="@+id/action_nav_discover_to_nav_city_list"
+            app:destination="@id/nav_city_list"
+            app:enterAnim="@animator/nav_default_enter_anim"
+            app:exitAnim="@animator/nav_default_exit_anim"
+            app:popEnterAnim="@animator/nav_default_pop_enter_anim"
+            app:popExitAnim="@animator/nav_default_pop_exit_anim"/>
+    </fragment>
+    <fragment android:id="@+id/nav_city_list"
+        android:name="com.rvapp.voyage.ui.discover.cities.CityListFragment"
+        android:label="City List"
+        tools:layout="@layout/fragment_list_city" >
+        <action
+            android:id="@+id/action_nav_city_list_to_nav_city"
+            app:destination="@id/nav_city"
+            app:enterAnim="@animator/nav_default_enter_anim"
+            app:exitAnim="@animator/nav_default_exit_anim"
+            app:popEnterAnim="@animator/nav_default_pop_enter_anim"
+            app:popExitAnim="@animator/nav_default_pop_exit_anim"/>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_city"
+        android:name="com.rvapp.voyage.ui.discover.cities.CityFragment"
+        android:label="fragment_city"
+        tools:layout="@layout/fragment_city" />
 </navigation>
