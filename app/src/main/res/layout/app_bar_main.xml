@@ -9,15 +9,15 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@null"
-        app:elevation="0dp">
+        android:background="@null">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:titleTextColor="@color/primary"
-            android:background="@null" />
+            android:background="@color/light_grey"
+            android:elevation="4dp"
+            app:titleTextColor="@color/primary"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 

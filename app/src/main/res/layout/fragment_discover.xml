@@ -1,90 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_grey"
     tools:context=".ui.gallery.GalleryFragment">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <HorizontalScrollView
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/discover_scroll_experience"
+        android:scrollbars="none"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <com.google.android.material.button.MaterialButtonToggleGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/discover_scroll_experience"
-            android:scrollbars="none"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/discover_toggle_experience"
+            android:gravity="center">
+            <com.google.android.material.button.MaterialButton
+                style="@style/Style.Voyage.Button.Outlined"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/discover_toggle_experience"
-                android:gravity="center"
-                android:layout_marginHorizontal="16dp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/discover_bt_experience_min"
+                android:text="@string/experience_mediterranean"
+                android:drawableTop="@drawable/ic_baseline_beach_access_24"
+                android:insetLeft="16dp"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintStart_toStartOf="parent"/>
 
-                <com.google.android.material.button.MaterialButton
-                    style="@style/Style.Voyage.Button.Outlined"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/discover_bt_experience_min"
-                    android:text="@string/experience_mediterranean"
-                    android:drawableTop="@drawable/ic_baseline_beach_access_24"
-                    android:insetLeft="4dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+            <com.google.android.material.button.MaterialButton
+                style="@style/Style.Voyage.Button.Outlined"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/discover_bt_experience_mid"
+                android:text="@string/experience_black_sea"
+                android:insetRight="8dp"
+                android:insetLeft="8dp"
+                android:drawableTop="@drawable/ic_baseline_sailing_24"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/discover_bt_population_min"
+                app:layout_constraintEnd_toStartOf="@id/discover_bt_population_max"/>
 
-                <com.google.android.material.button.MaterialButton
-                    style="@style/Style.Voyage.Button.Outlined"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/discover_bt_experience_mid"
-                    android:text="@string/experience_black_sea"
-                    android:insetRight="8dp"
-                    android:insetLeft="8dp"
-                    android:drawableTop="@drawable/ic_baseline_sailing_24"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/discover_bt_population_min"
-                    app:layout_constraintEnd_toStartOf="@id/discover_bt_population_max"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/discover_bt_experience_max"
+                style="@style/Style.Voyage.Button.Outlined"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/experience_north"
+                android:drawableTop="@drawable/ic_baseline_ac_unit_24"
+                android:insetRight="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+    </HorizontalScrollView>
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/discover_bt_experience_max"
-                    style="@style/Style.Voyage.Button.Outlined"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/experience_north"
-                    android:drawableTop="@drawable/ic_baseline_ac_unit_24"
-                    android:insetRight="4dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?attr/dividerHorizontal"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintTop_toBottomOf="@id/discover_scroll_experience"
+        app:layout_constraintBottom_toTopOf="@id/discover_scroll_pop"/>
 
-            </com.google.android.material.button.MaterialButtonToggleGroup>
-        </HorizontalScrollView>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="?attr/dividerHorizontal"
-            android:layout_marginHorizontal="16dp"
-            app:layout_constraintTop_toBottomOf="@id/discover_scroll_experience"
-            app:layout_constraintBottom_toTopOf="@id/discover_toggle_pop"/>
-
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/discover_scroll_pop"
+        android:scrollbars="none"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/discover_scroll_experience"
+        app:layout_constraintEnd_toEndOf="parent">
         <com.google.android.material.button.MaterialButtonToggleGroup
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/discover_toggle_pop"
-            android:layout_marginTop="24dp"
-            android:gravity="center"
-            android:layout_marginHorizontal="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/discover_scroll_experience"
-            app:layout_constraintEnd_toEndOf="parent">
+            android:gravity="center">
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Style.Voyage.Button.Outlined"
@@ -120,27 +114,32 @@
                 android:insetRight="4dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
-
         </com.google.android.material.button.MaterialButtonToggleGroup>
+    </HorizontalScrollView>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="?attr/dividerHorizontal"
-            android:layout_marginHorizontal="16dp"
-            app:layout_constraintTop_toBottomOf="@id/discover_toggle_pop"
-            app:layout_constraintBottom_toTopOf="@id/discover_toggle_elevation"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?attr/dividerHorizontal"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintTop_toBottomOf="@id/discover_scroll_pop"
+        app:layout_constraintBottom_toTopOf="@id/discover_scroll_elevation"/>
 
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/discover_scroll_elevation"
+        android:scrollbars="none"
+        android:layout_marginTop="24dp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/discover_scroll_pop"
+        app:layout_constraintEnd_toEndOf="parent">
         <com.google.android.material.button.MaterialButtonToggleGroup
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/discover_toggle_elevation"
-            android:layout_marginTop="24dp"
-            android:gravity="center"
-            android:layout_marginHorizontal="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/discover_toggle_pop"
-            app:layout_constraintEnd_toEndOf="parent">
+            android:gravity="center">
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Style.Voyage.Button.Outlined"
@@ -178,29 +177,29 @@
                 app:layout_constraintEnd_toEndOf="parent"/>
 
         </com.google.android.material.button.MaterialButtonToggleGroup>
+    </HorizontalScrollView>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/text_gallery"
-            style="@style/Style.Voyage.Button.Outlined.NoBold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:text="Import"
-            app:layout_constraintBottom_toBottomOf="@+id/advance_bt"
-            app:layout_constraintEnd_toStartOf="@+id/advance_bt"
-            app:layout_constraintTop_toTopOf="@+id/advance_bt" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/text_gallery"
+        style="@style/Style.Voyage.Button.Outlined.NoBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="Import"
+        app:layout_constraintBottom_toBottomOf="@+id/advance_bt"
+        app:layout_constraintEnd_toStartOf="@+id/advance_bt"
+        app:layout_constraintTop_toTopOf="@+id/advance_bt" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/advance_bt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Next"
-            android:drawableEnd="@drawable/ic_baseline_flight_24"
-            android:drawableTint="@android:color/white"
-            android:layout_marginEnd="40dp"
-            android:layout_marginTop="32dp"
-            android:elevation="4dp"
-            app:layout_constraintTop_toBottomOf="@id/discover_toggle_elevation"
-            app:layout_constraintEnd_toEndOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/advance_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:drawableEnd="@drawable/ic_baseline_flight_24"
+        android:drawableTint="@android:color/white"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="32dp"
+        android:elevation="4dp"
+        app:layout_constraintTop_toBottomOf="@id/discover_scroll_elevation"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
