@@ -49,7 +49,7 @@
         android:label="City List"
         tools:layout="@layout/fragment_list_city" >
         <action
-            android:id="@+id/action_nav_city_list_to_nav_city"
+            android:id="@+id/action_city_list_to_details"
             app:destination="@id/nav_city"
             app:enterAnim="@animator/nav_default_enter_anim"
             app:exitAnim="@animator/nav_default_exit_anim"
@@ -60,5 +60,9 @@
         android:id="@+id/nav_city"
         android:name="com.rvapp.voyage.ui.discover.cities.CityFragment"
         android:label="fragment_city"
-        tools:layout="@layout/fragment_city" />
+        tools:layout="@layout/fragment_city" >
+        <argument
+            android:name="city"
+            app:argType="com.rvapp.voyage.model.entities.City" />
+    </fragment>
 </navigation>

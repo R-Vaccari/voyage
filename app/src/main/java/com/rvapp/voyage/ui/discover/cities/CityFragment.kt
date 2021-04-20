@@ -7,8 +7,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavArgs
+import androidx.navigation.fragment.navArgs
 import com.rvapp.voyage.R
 import com.rvapp.voyage.databinding.FragmentCityBinding
+import com.rvapp.voyage.model.entities.City
 import com.rvapp.voyage.ui.discover.DiscoverSharedViewModel
 import com.rvapp.voyage.ui.main.MainActivity
 import com.squareup.picasso.Picasso
@@ -20,13 +23,14 @@ class CityFragment : Fragment() {
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentCityBinding.inflate(inflater, container, false)
         val root = binding.root
+        val city: City = CityFragmentArgs.fromBundle(requireArguments()).city
+        binding.city = city
 
-
-        val ac: MainActivity = activity as MainActivity
         val banner = root.findViewById<ImageView>(R.id.city_banner)
+        Picasso.get().load(city.photo_url).into(banner)
         return root
     }
 }
