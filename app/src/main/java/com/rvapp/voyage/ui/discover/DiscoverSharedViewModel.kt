@@ -18,26 +18,11 @@ class DiscoverSharedViewModel : ViewModel() {
     private val _ready = MutableLiveData(false)
     val ready: LiveData<Boolean> = _ready
 
-    private val _text = MutableLiveData<String>()
-    val text: LiveData<String> = _text
-
     private val _cities = MutableLiveData<LinkedHashSet<City>>()
     val cities: LiveData<LinkedHashSet<City>> = _cities
 
     private val _currentCity = MutableLiveData<City>()
     val currentCity: LiveData<City> = _currentCity
-
-    private val _picture = MutableLiveData<String>()
-    val picture: LiveData<String> = _picture
-
-    fun getArticle() {
-        viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                val api = WikiMediaAPI()
-                val result = api.requestArticle()
-            }
-        }
-    }
 
     private fun getWikiData(city: City) {
         val api = WikiMediaAPI()

@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import com.rvapp.voyage.R
 import com.rvapp.voyage.databinding.FragmentCityBinding
 import com.rvapp.voyage.ui.discover.DiscoverSharedViewModel
+import com.rvapp.voyage.ui.main.MainActivity
 import com.squareup.picasso.Picasso
 
 class CityFragment : Fragment() {
@@ -24,8 +25,8 @@ class CityFragment : Fragment() {
         val root = binding.root
 
 
+        val ac: MainActivity = activity as MainActivity
         val banner = root.findViewById<ImageView>(R.id.city_banner)
-        Picasso.get().load(discoverViewModel.picture.value).into(banner)
         return root
     }
 }

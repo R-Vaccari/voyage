@@ -4,14 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
 import com.rvapp.voyage.R
-import com.rvapp.voyage.model.entities.City
 
 class DiscoverFragment : Fragment() {
     private val discoverViewModel by activityViewModels<DiscoverSharedViewModel>()
