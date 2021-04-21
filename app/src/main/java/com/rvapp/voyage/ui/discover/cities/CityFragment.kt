@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavArgs
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.navGraphViewModels
 import com.amadeus.android.Amadeus
 import com.amadeus.android.ApiResult
 import com.amadeus.android.referenceData.Location
@@ -28,7 +29,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class CityFragment : Fragment() {
-    private val discoverViewModel by activityViewModels<DiscoverSharedViewModel>()
+    private val discoverViewModel by navGraphViewModels<DiscoverSharedViewModel>(R.id.nav_city)
     lateinit var amadeus: Amadeus
     lateinit var resultText: MaterialTextView
 
@@ -41,10 +42,7 @@ class CityFragment : Fragment() {
         val root = binding.root
         val city: City = CityFragmentArgs.fromBundle(requireArguments()).city
         binding.city = city
-
-        val main = activity as MainActivity
-        amadeus = main.amadeus
-        getPOIs(city)
+        //getPOIs(city)
 
 
         resultText = root.findViewById(R.id.api_result)
@@ -53,17 +51,26 @@ class CityFragment : Fragment() {
         return root
     }
 
-    private suspend fun setResult(result: String?) {
+    private suspend fun setResult(result: ApiResult.Success<*>) {
         withContext(Main) {
-            resultText.text = result
+            resultText.text = result.data.toString()
         }
     }
 
+    private suspend fun setError(error: String) {
+        withContext(Main) {
+            resultText.text = error
+        }
+    }
+
+    //"https://test.api.amadeus.com/v1/reference-data/locations/pois?latitude=51.509865&longitude=-0.118092&radius=1&page%5Blimit%5D=10&page%5Boffset%5D=0"
     private fun getPOIs(city: City) {
         CoroutineScope(IO).launch {
-            val result = amadeus.get("https://test.api.amadeus.com/v1/reference-data/locations/pois?latitude=51.509865&longitude=-0.118092&radius=1&page%5Blimit%5D=10&page%5Boffset%5D=0")
-            setResult(result)
+            when (val result = amadeus.referenceData.locations.pointsOfInterest.get(51.509865,
+                -0.118092, 1, 1, 0)) {
+                is ApiResult.Success<*> -> setResult(result)
+                else -> setError("Erro")
+            }
         }
-
     }
 }

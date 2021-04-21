@@ -6,13 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navGraphViewModels
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
 import com.rvapp.voyage.R
 
 class DiscoverFragment : Fragment() {
-    private val discoverViewModel by activityViewModels<DiscoverSharedViewModel>()
+    private val discoverViewModel by navGraphViewModels<DiscoverSharedViewModel>(R.id.nav_discover, ViewModelProvider.Factory {
+
+    })
     private var lock01 = false
     private var lock02 = false
     private var lock03 = false

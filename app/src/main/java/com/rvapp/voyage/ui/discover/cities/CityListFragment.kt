@@ -6,13 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rvapp.voyage.R
 import com.rvapp.voyage.ui.discover.DiscoverSharedViewModel
 
 class CityListFragment : Fragment() {
-    private val discoverViewModel by activityViewModels<DiscoverSharedViewModel>()
+    private val discoverViewModel by navGraphViewModels<DiscoverSharedViewModel>(R.id.nav_city_list)
 
     override fun onCreateView(
             inflater: LayoutInflater,
