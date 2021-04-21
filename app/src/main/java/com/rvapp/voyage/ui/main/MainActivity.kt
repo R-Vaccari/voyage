@@ -21,14 +21,12 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var amadeus: Amadeus
+    lateinit var amadeus: Amadeus
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         amadeus = Amadeus.Builder(this)
-            .setClientId(R.string.amadeus_key.toString())
-            .setClientSecret(R.string.amadeus_secret.toString())
             .build()
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
