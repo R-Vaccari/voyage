@@ -6,30 +6,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.NavArgs
-import androidx.navigation.fragment.navArgs
 import androidx.navigation.navGraphViewModels
 import com.amadeus.android.Amadeus
 import com.amadeus.android.ApiResult
-import com.amadeus.android.referenceData.Location
 import com.google.android.material.textview.MaterialTextView
 import com.rvapp.voyage.R
 import com.rvapp.voyage.databinding.FragmentCityBinding
 import com.rvapp.voyage.model.entities.City
-import com.rvapp.voyage.ui.discover.DiscoverSharedViewModel
-import com.rvapp.voyage.ui.main.MainActivity
+import com.rvapp.voyage.ui.discover.viewmodel.DiscoverFactory
+import com.rvapp.voyage.ui.discover.viewmodel.DiscoverSharedViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class CityFragment : Fragment() {
-    private val discoverViewModel by navGraphViewModels<DiscoverSharedViewModel>(R.id.nav_city)
+    private val discoverViewModel by navGraphViewModels<DiscoverSharedViewModel>(R.id.discover_graph) { DiscoverFactory(requireContext()) }
     lateinit var amadeus: Amadeus
     lateinit var resultText: MaterialTextView
 

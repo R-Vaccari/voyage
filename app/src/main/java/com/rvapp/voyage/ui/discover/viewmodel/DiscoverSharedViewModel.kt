@@ -1,9 +1,10 @@
-package com.rvapp.voyage.ui.discover
+package com.rvapp.voyage.ui.discover.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.amadeus.android.Amadeus
 import com.rvapp.voyage.model.api.DiscoverFilter
 import com.rvapp.voyage.model.api.GeoDBAPI
 import com.rvapp.voyage.model.api.WikiMediaAPI
@@ -12,7 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class DiscoverSharedViewModel : ViewModel() {
+class DiscoverSharedViewModel(val amadeus: Amadeus) : ViewModel() {
     var filter: DiscoverFilter = DiscoverFilter()
 
     private val _ready = MutableLiveData(false)
