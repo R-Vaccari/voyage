@@ -5,16 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.amadeus.android.Amadeus
-import com.amadeus.android.ApiResult
-import com.amadeus.android.referenceData.Location
-import com.rvapp.voyage.R
+import com.amadeus.android.domain.resources.Location
 import com.rvapp.voyage.model.api.DiscoverFilter
 import com.rvapp.voyage.model.api.GeoDBAPI
 import com.rvapp.voyage.model.api.WikiMediaAPI
 import com.rvapp.voyage.model.entities.City
 import com.rvapp.voyage.util.AmadeusHelper
-import kotlinx.coroutines.*
-import okhttp3.internal.wait
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class DiscoverSharedViewModel(val amadeus: Amadeus) : ViewModel() {
     val amadeusHelper = AmadeusHelper(amadeus)

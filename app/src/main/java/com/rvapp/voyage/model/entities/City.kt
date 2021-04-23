@@ -2,6 +2,7 @@ package com.rvapp.voyage.model.entities
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.amadeus.android.domain.resources.Location
 import com.google.gson.annotations.SerializedName
 
 data class City(@SerializedName("wikiDataId") val wikiDataId: String,
@@ -11,6 +12,7 @@ data class City(@SerializedName("wikiDataId") val wikiDataId: String,
 
     lateinit var description: String
     lateinit var photo_url: String
+    lateinit var pointsOfInterest: List<Location>
     var population: Int = -100
     var elevation: Int = -100
 

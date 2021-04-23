@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.navigation.navGraphViewModels
-import com.amadeus.android.Amadeus
-import com.amadeus.android.ApiResult
-import com.amadeus.android.referenceData.Location
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.amadeus.android.domain.resources.Location
 import com.google.android.material.textview.MaterialTextView
 import com.rvapp.voyage.R
 import com.rvapp.voyage.databinding.FragmentCityBinding
@@ -17,17 +17,11 @@ import com.rvapp.voyage.model.entities.City
 import com.rvapp.voyage.ui.discover.viewmodel.DiscoverFactory
 import com.rvapp.voyage.ui.discover.viewmodel.DiscoverSharedViewModel
 import com.squareup.picasso.Picasso
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import okhttp3.internal.wait
 
 class CityFragment : Fragment() {
     private val discoverViewModel by navGraphViewModels<DiscoverSharedViewModel>(R.id.discover_graph) { DiscoverFactory(requireContext()) }
-    lateinit var resultText: MaterialTextView
     lateinit var city: City
 
     override fun onCreateView(
@@ -38,20 +32,23 @@ class CityFragment : Fragment() {
         val binding = FragmentCityBinding.inflate(inflater, container, false)
         city = CityFragmentArgs.fromBundle(requireArguments()).city
         binding.city = city
-        val root = binding.root
 
-        resultText = root.findViewById(R.id.api_result)
+        val root = binding.root
+        val resultText = root.findViewById<MaterialTextView>(R.id.api_result)
         val banner = root.findViewById<ImageView>(R.id.city_banner)
         Picasso.get().load(city.photo_url).into(banner)
+
+        MainScope().launch {
+            val locations = discoverViewModel.getPOIs(city)
+            if (locations != null) setRecycler(root, locations)
+            else resultText.text = resources.getString(R.string.no_pois)
+        }
         return root
     }
 
-    override fun onStart() {
-        MainScope().launch {
-            val locations =  discoverViewModel.getPOIs(city)
-            if (locations != null) resultText.text = locations.toString()
-            else resultText.text = R.string.no_pois.toString()
-        }
-        super.onStart()
+    private fun setRecycler(root: View, locations: List<Location>) {
+        val recycler = root.findViewById<RecyclerView>(R.id.city_recycler)
+        recycler.layoutManager = LinearLayoutManager(requireContext())
+        recycler.adapter = CityLocationsAdapter(locations)
     }
 }
