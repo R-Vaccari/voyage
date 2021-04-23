@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.navGraphViewModels
 import com.amadeus.android.Amadeus
 import com.amadeus.android.ApiResult
+import com.amadeus.android.referenceData.Location
 import com.google.android.material.textview.MaterialTextView
 import com.rvapp.voyage.R
 import com.rvapp.voyage.databinding.FragmentCityBinding
@@ -19,13 +20,15 @@ import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import okhttp3.internal.wait
 
 class CityFragment : Fragment() {
     private val discoverViewModel by navGraphViewModels<DiscoverSharedViewModel>(R.id.discover_graph) { DiscoverFactory(requireContext()) }
-    lateinit var amadeus: Amadeus
     lateinit var resultText: MaterialTextView
+    lateinit var city: City
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -33,11 +36,9 @@ class CityFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View {
         val binding = FragmentCityBinding.inflate(inflater, container, false)
-        val root = binding.root
-        val city: City = CityFragmentArgs.fromBundle(requireArguments()).city
+        city = CityFragmentArgs.fromBundle(requireArguments()).city
         binding.city = city
-        //getPOIs(city)
-
+        val root = binding.root
 
         resultText = root.findViewById(R.id.api_result)
         val banner = root.findViewById<ImageView>(R.id.city_banner)
@@ -45,26 +46,12 @@ class CityFragment : Fragment() {
         return root
     }
 
-    private suspend fun setResult(result: ApiResult.Success<*>) {
-        withContext(Main) {
-            resultText.text = result.data.toString()
+    override fun onStart() {
+        MainScope().launch {
+            val locations =  discoverViewModel.getPOIs(city)
+            if (locations != null) resultText.text = locations.toString()
+            else resultText.text = R.string.no_pois.toString()
         }
-    }
-
-    private suspend fun setError(error: String) {
-        withContext(Main) {
-            resultText.text = error
-        }
-    }
-
-    //"https://test.api.amadeus.com/v1/reference-data/locations/pois?latitude=51.509865&longitude=-0.118092&radius=1&page%5Blimit%5D=10&page%5Boffset%5D=0"
-    private fun getPOIs(city: City) {
-        CoroutineScope(IO).launch {
-            when (val result = amadeus.referenceData.locations.pointsOfInterest.get(51.509865,
-                -0.118092, 1, 1, 0)) {
-                is ApiResult.Success<*> -> setResult(result)
-                else -> setError("Erro")
-            }
-        }
+        super.onStart()
     }
 }
