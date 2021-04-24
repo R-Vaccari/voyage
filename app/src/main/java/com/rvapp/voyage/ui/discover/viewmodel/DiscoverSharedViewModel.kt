@@ -10,14 +10,14 @@ import com.rvapp.voyage.model.api.DiscoverFilter
 import com.rvapp.voyage.model.api.GeoDBAPI
 import com.rvapp.voyage.model.api.WikiMediaAPI
 import com.rvapp.voyage.model.entities.City
-import com.rvapp.voyage.util.AmadeusHelper
+import com.rvapp.voyage.model.api.AmadeusAPI
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class DiscoverSharedViewModel(val amadeus: Amadeus) : ViewModel() {
-    val amadeusHelper = AmadeusHelper(amadeus)
+    val amadeusHelper = AmadeusAPI(amadeus)
 
     var filter: DiscoverFilter = DiscoverFilter()
 
@@ -52,9 +52,13 @@ class DiscoverSharedViewModel(val amadeus: Amadeus) : ViewModel() {
         }
     }
 
-    //"https://test.api.amadeus.com/v1/reference-data/locations/pois?latitude=51.509865&longitude=-0.118092&radius=1&page%5Blimit%5D=10&page%5Boffset%5D=0"
     suspend fun getPOIs(city: City): List<Location>? {
         val result = viewModelScope.async { amadeusHelper.getPOIs(city) }
         return result.await()
+    }
+
+    suspend fun getPOIsDirectly(city: City): String? {
+        val string = viewModelScope.async { amadeusHelper.getPOIsDirectly(city) }
+        return string.await()
     }
 }

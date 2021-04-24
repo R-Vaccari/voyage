@@ -3,7 +3,7 @@ package com.rvapp.voyage.model.api
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.rvapp.voyage.model.entities.wikimedia.WikiMediaData
-import com.rvapp.voyage.model.api.deserializers.WikiMediaDeserializer
+import com.rvapp.voyage.model.api.deserializers.wikimedia.WikiMediaDeserializer
 import com.rvapp.voyage.util.HashHelper
 import okhttp3.ResponseBody
 import retrofit2.Call

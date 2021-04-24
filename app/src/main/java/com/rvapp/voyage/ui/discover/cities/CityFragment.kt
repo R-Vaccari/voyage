@@ -41,7 +41,8 @@ class CityFragment : Fragment() {
         MainScope().launch {
             val locations = discoverViewModel.getPOIs(city)
             if (locations != null) setRecycler(root, locations)
-            else resultText.text = resources.getString(R.string.no_pois)
+            val string = discoverViewModel.getPOIsDirectly(city)
+            resultText.text = string
         }
         return root
     }
@@ -49,6 +50,6 @@ class CityFragment : Fragment() {
     private fun setRecycler(root: View, locations: List<Location>) {
         val recycler = root.findViewById<RecyclerView>(R.id.city_recycler)
         recycler.layoutManager = LinearLayoutManager(requireContext())
-        recycler.adapter = CityLocationsAdapter(locations)
+        recycler.adapter = CityLocationsAdapter(locations, requireContext())
     }
 }

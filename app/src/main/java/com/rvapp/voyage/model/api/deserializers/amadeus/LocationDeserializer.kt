@@ -1,4 +1,4 @@
-package com.rvapp.voyage.model.api.deserializers
+package com.rvapp.voyage.model.api.deserializers.amadeus
 
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
@@ -7,7 +7,7 @@ import com.google.gson.JsonObject
 import com.rvapp.voyage.model.entities.wikimedia.WikiMediaData
 import java.lang.reflect.Type
 
-class WikiMediaDeserializer: JsonDeserializer<WikiMediaData> {
+class LocationDeserializer: JsonDeserializer<WikiMediaData> {
     lateinit var wikiId: String
 
     override fun deserialize(json: JsonElement?, typeOfT: Type?, context: JsonDeserializationContext?): WikiMediaData {
