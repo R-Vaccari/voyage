@@ -9,11 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.amadeus.android.domain.resources.Location
 import com.google.android.material.textview.MaterialTextView
 import com.rvapp.voyage.R
 import com.rvapp.voyage.databinding.FragmentCityBinding
 import com.rvapp.voyage.model.entities.City
+import com.rvapp.voyage.model.entities.Location
 import com.rvapp.voyage.ui.discover.viewmodel.DiscoverFactory
 import com.rvapp.voyage.ui.discover.viewmodel.DiscoverSharedViewModel
 import com.squareup.picasso.Picasso
@@ -39,15 +39,14 @@ class CityFragment : Fragment() {
         Picasso.get().load(city.photo_url).into(banner)
 
         MainScope().launch {
-            val locations = discoverViewModel.getPOIs(city)
+            val locations = discoverViewModel.getPOIsRaw(city)
             if (locations != null) setRecycler(root, locations)
-            val string = discoverViewModel.getPOIsDirectly(city)
-            resultText.text = string
+            val string = discoverViewModel.getPOIsRaw(city)
         }
         return root
     }
 
-    private fun setRecycler(root: View, locations: List<Location>) {
+    private fun setRecycler(root: View, locations: LinkedHashSet<Location>) {
         val recycler = root.findViewById<RecyclerView>(R.id.city_recycler)
         recycler.layoutManager = LinearLayoutManager(requireContext())
         recycler.adapter = CityLocationsAdapter(locations, requireContext())

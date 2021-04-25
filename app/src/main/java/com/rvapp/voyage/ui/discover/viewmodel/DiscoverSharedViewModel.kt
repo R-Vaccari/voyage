@@ -6,11 +6,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.amadeus.android.Amadeus
 import com.amadeus.android.domain.resources.Location
+import com.rvapp.voyage.model.api.AmadeusAPI
 import com.rvapp.voyage.model.api.DiscoverFilter
 import com.rvapp.voyage.model.api.GeoDBAPI
 import com.rvapp.voyage.model.api.WikiMediaAPI
 import com.rvapp.voyage.model.entities.City
-import com.rvapp.voyage.model.api.AmadeusAPI
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -57,8 +57,10 @@ class DiscoverSharedViewModel(val amadeus: Amadeus) : ViewModel() {
         return result.await()
     }
 
-    suspend fun getPOIsDirectly(city: City): String? {
-        val string = viewModelScope.async { amadeusHelper.getPOIsDirectly(city) }
-        return string.await()
+    suspend fun getPOIsRaw(city: City): LinkedHashSet<com.rvapp.voyage.model.entities.Location> {
+        return withContext(viewModelScope.coroutineContext) {
+            amadeusHelper.getPOIsRaw(city)
+        }
     }
+
 }

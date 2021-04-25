@@ -11,18 +11,18 @@ class WikiMediaDeserializer: JsonDeserializer<WikiMediaData> {
     lateinit var wikiId: String
 
     override fun deserialize(json: JsonElement?, typeOfT: Type?, context: JsonDeserializationContext?): WikiMediaData {
-        val entityObject: JsonObject = json!!.asJsonObject
+        val entity: JsonObject = json!!.asJsonObject
                 .getAsJsonObject("entities")
                 .getAsJsonObject(wikiId)
 
-        val description: String = entityObject
+        val description: String = entity
                 .getAsJsonObject("descriptions")
                 .getAsJsonObject("en")
                 .get("value").asString
 
         var population: Int
         try {
-            population = entityObject
+            population = entity
                     .getAsJsonObject("claims")
                     .getAsJsonArray("P1082")
                     .get(0).asJsonObject
@@ -35,7 +35,7 @@ class WikiMediaDeserializer: JsonDeserializer<WikiMediaData> {
 
         var p948: String
         try {
-            p948 = entityObject
+            p948 = entity
                     .getAsJsonObject("claims")
                     .getAsJsonArray("P948")
                     .get(0).asJsonObject
@@ -47,7 +47,7 @@ class WikiMediaDeserializer: JsonDeserializer<WikiMediaData> {
 
         var p18: String
         try {
-            p18 = entityObject
+            p18 = entity
                     .getAsJsonObject("claims")
                     .getAsJsonArray("P18")
                     .get(0).asJsonObject
@@ -59,7 +59,7 @@ class WikiMediaDeserializer: JsonDeserializer<WikiMediaData> {
 
         var elevation: Int
         try {
-            elevation = entityObject
+            elevation = entity
                 .getAsJsonObject("claims")
                 .getAsJsonArray("P3044")
                 .get(0).asJsonObject

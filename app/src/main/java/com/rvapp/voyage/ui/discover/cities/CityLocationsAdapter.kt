@@ -4,11 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.amadeus.android.domain.resources.Location
 
 import com.rvapp.voyage.databinding.CityLocationItemBinding
+import com.rvapp.voyage.model.entities.Location
 
-class CityLocationsAdapter(private val locations: List<Location>,
+class CityLocationsAdapter(private val locations: LinkedHashSet<com.rvapp.voyage.model.entities.Location>,
                            private val context: Context
                            ): RecyclerView.Adapter<CityLocationsAdapter.ViewHolder>() {
 
@@ -17,7 +17,7 @@ class CityLocationsAdapter(private val locations: List<Location>,
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(locations[position])
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(locations.elementAt(position))
 
     override fun getItemCount(): Int = locations.size
 
