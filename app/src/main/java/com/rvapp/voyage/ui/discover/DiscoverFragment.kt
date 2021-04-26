@@ -25,61 +25,7 @@ class DiscoverFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_discover, container, false)
-        disableLocks()
-        groupListeners(root)
-        initButtons(root)
         return root
-    }
-
-    private fun groupListeners(root: View) {
-        root.findViewById<MaterialButtonToggleGroup>(R.id.discover_toggle_experience)
-            .addOnButtonCheckedListener { _: MaterialButtonToggleGroup, i: Int, b: Boolean ->
-            lock01 = b
-            if (lock01 && lock02 && lock03) discoverViewModel.getGeoCities()
-        }
-
-        root.findViewById<MaterialButtonToggleGroup>(R.id.discover_toggle_pop)
-            .addOnButtonCheckedListener { _: MaterialButtonToggleGroup, i: Int, b: Boolean ->
-            lock02 = b
-            if (lock01 && lock02 && lock03) discoverViewModel.getGeoCities()
-        }
-
-        root.findViewById<MaterialButtonToggleGroup>(R.id.discover_toggle_elevation)
-            .addOnButtonCheckedListener { _: MaterialButtonToggleGroup, i: Int, b: Boolean ->
-            lock03 = b
-            if (lock01 && lock02 && lock03) discoverViewModel.getGeoCities()
-        }
-    }
-
-    private fun initButtons(root: View) {
-        root.findViewById<MaterialButton>(R.id.text_gallery).setOnClickListener {
-            discoverViewModel.getGeoCities()
-        }
-
-        val btNext: MaterialButton = root.findViewById(R.id.advance_bt)
-        btNext.setOnClickListener {
-            findNavController().navigate(R.id.action_nav_discover_to_nav_city_list)
-        }
-
-        discoverViewModel.ready.observe(viewLifecycleOwner) {
-            btNext.isEnabled = it
-        }
-
-        root.findViewById<MaterialButton>(R.id.discover_bt_experience_max).addOnCheckedChangeListener { materialButton: MaterialButton, b: Boolean ->
-            discoverViewModel.filter.experience = "North"
-        }
-        root.findViewById<MaterialButton>(R.id.discover_bt_population_max).addOnCheckedChangeListener { materialButton: MaterialButton, b: Boolean ->
-            discoverViewModel.filter.population = 10000
-        }
-        root.findViewById<MaterialButton>(R.id.discover_bt_elevation_max).addOnCheckedChangeListener { materialButton: MaterialButton, b: Boolean ->
-            discoverViewModel.filter.elevation = 1000
-        }
-    }
-
-    private fun disableLocks() {
-        lock01 = false
-        lock02 = false
-        lock03 = false
     }
 }
 

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rvapp.voyage.databinding.CityLocationItemBinding
 import com.rvapp.voyage.model.entities.Location
 
-class CityLocationsAdapter(private val locations: LinkedHashSet<com.rvapp.voyage.model.entities.Location>,
+class CityLocationsAdapter(private val locations: LinkedHashSet<Location>,
                            private val context: Context
                            ): RecyclerView.Adapter<CityLocationsAdapter.ViewHolder>() {
 

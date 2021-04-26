@@ -32,18 +32,19 @@ class CityFragment : Fragment() {
         val binding = FragmentCityBinding.inflate(inflater, container, false)
         city = CityFragmentArgs.fromBundle(requireArguments()).city
         binding.city = city
+        return binding.root
+    }
 
-        val root = binding.root
-        val resultText = root.findViewById<MaterialTextView>(R.id.api_result)
-        val banner = root.findViewById<ImageView>(R.id.city_banner)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val resultText = view.findViewById<MaterialTextView>(R.id.api_result)
+        val banner = view.findViewById<ImageView>(R.id.city_banner)
         Picasso.get().load(city.photo_url).into(banner)
 
         MainScope().launch {
             val locations = discoverViewModel.getPOIsRaw(city)
-            if (locations != null) setRecycler(root, locations)
-            val string = discoverViewModel.getPOIsRaw(city)
+            setRecycler(view, locations)
         }
-        return root
     }
 
     private fun setRecycler(root: View, locations: LinkedHashSet<Location>) {

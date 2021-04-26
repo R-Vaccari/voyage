@@ -8,180 +8,133 @@
     android:background="@color/light_grey"
     tools:context=".ui.gallery.GalleryFragment">
 
-    <com.google.android.material.button.MaterialButtonToggleGroup
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/discover_toggle_experience"
-        android:gravity="center"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-        <com.google.android.material.button.MaterialButton
-            style="@style/Style.Voyage.Button.Outlined"
+        android:layout_height="160dp"
+        style="@style/InfoTab"
+        android:id="@+id/discover_experience_layout"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/discover_bt_experience_min"
-            android:text="@string/experience_mediterranean"
-            android:drawableTop="@drawable/ic_baseline_beach_access_24"
-            android:insetLeft="24dp"
-            android:layout_weight="1"
+            android:text="@string/experience"
+            style="@style/Style.Voyage.InfoBox.Header"
+            android:id="@+id/discover_experience_title"
+            android:layout_margin="16dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-        </com.google.android.material.button.MaterialButton>
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <com.google.android.material.button.MaterialButton
-            style="@style/Style.Voyage.Button.Outlined"
-            android:layout_width="wrap_content"
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/discover_bt_experience_mid"
-            android:text="@string/experience_black_sea"
-            android:insetRight="24dp"
-            android:insetLeft="8dp"
-            android:drawableTop="@drawable/ic_baseline_sailing_24"
-            android:layout_weight="2"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/discover_bt_population_min"
-            app:layout_constraintEnd_toStartOf="@id/discover_bt_population_max"/>
+            android:text="@string/experience_info"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@id/discover_experience_bt"
+            app:layout_constraintTop_toBottomOf="@id/discover_experience_title"
+            app:layout_constraintStart_toStartOf="@id/discover_experience_title"/>
 
-    </com.google.android.material.button.MaterialButtonToggleGroup>
-
-    <com.google.android.material.button.MaterialButtonToggleGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/discover_toggle_experience_last"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="@id/discover_toggle_experience"
-        app:layout_constraintTop_toBottomOf="@id/discover_toggle_experience"
-        app:layout_constraintEnd_toEndOf="@id/discover_toggle_experience">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/discover_bt_experience_max"
-            style="@style/Style.Voyage.Button.Outlined"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/experience_north"
-            android:drawableTop="@drawable/ic_baseline_ac_unit_24"
-            android:insetRight="16dp"
-            android:autoSizeTextType="uniform"
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/discover_experience_bt"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/circle_shape"
+            android:src="@drawable/ic_round_arrow_forward_24"
+            app:tint="@color/primary"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </com.google.android.material.button.MaterialButtonToggleGroup>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <View
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="?attr/dividerHorizontal"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintTop_toBottomOf="@id/discover_toggle_experience_last"
-        app:layout_constraintBottom_toTopOf="@id/discover_toggle_pop"/>
+        android:layout_height="160dp"
+        style="@style/InfoTab"
+        android:id="@+id/discover_style_layout"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@id/discover_experience_layout">
 
-    <com.google.android.material.button.MaterialButtonToggleGroup
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/experience"
+            style="@style/Style.Voyage.InfoBox.Header"
+            android:id="@+id/discover_style_title"
+            android:layout_margin="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/experience_info"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@id/discover_style_bt"
+            app:layout_constraintTop_toBottomOf="@id/discover_style_title"
+            app:layout_constraintStart_toStartOf="@id/discover_style_title"/>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/discover_style_bt"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/circle_shape"
+            android:src="@drawable/ic_round_arrow_forward_24"
+            app:tint="@color/primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/discover_toggle_pop"
-        android:gravity="center"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/discover_toggle_experience_last"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_height="160dp"
+        style="@style/InfoTab"
+        android:id="@+id/discover_experience_layout"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.button.MaterialButton
-            style="@style/Style.Voyage.Button.Outlined"
+        <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/discover_bt_population_min"
-            android:text="@string/pop_min"
-            android:drawableTop="@drawable/ic_baseline_cottage_24"
-            android:insetLeft="24dp"
-            android:layout_weight="1"
+            android:text="@string/experience"
+            style="@style/Style.Voyage.InfoBox.Header"
+            android:id="@+id/discover_experience_title"
+            android:layout_margin="16dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <com.google.android.material.button.MaterialButton
-            style="@style/Style.Voyage.Button.Outlined"
-            android:layout_width="wrap_content"
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/discover_bt_population_mid"
-            android:text="@string/pop_mid"
-            android:insetRight="8dp"
-            android:insetLeft="8dp"
-            android:drawableTop="@drawable/ic_baseline_location_city_24"
-            android:layout_weight="1"
+            android:text="@string/experience_info"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@id/discover_experience_bt"
+            app:layout_constraintTop_toBottomOf="@id/discover_experience_title"
+            app:layout_constraintStart_toStartOf="@id/discover_experience_title"/>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/discover_experience_bt"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/circle_shape"
+            android:src="@drawable/ic_round_arrow_forward_24"
+            app:tint="@color/primary"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/discover_bt_population_min"
-            app:layout_constraintEnd_toStartOf="@id/discover_bt_population_max"/>
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <com.google.android.material.button.MaterialButton
-            style="@style/Style.Voyage.Button.Outlined"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/discover_bt_population_max"
-            android:text="@string/pop_max"
-            android:drawableTop="@drawable/ic_baseline_apartment_24"
-            android:insetRight="24dp"
-            android:layout_weight="1"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-    </com.google.android.material.button.MaterialButtonToggleGroup>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="?attr/dividerHorizontal"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintTop_toBottomOf="@id/discover_toggle_pop"
-        app:layout_constraintBottom_toTopOf="@id/discover_toggle_elevation"/>
 
-    <com.google.android.material.button.MaterialButtonToggleGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/discover_toggle_elevation"
-        android:gravity="center"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/discover_toggle_pop"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <com.google.android.material.button.MaterialButton
-            style="@style/Style.Voyage.Button.Outlined"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/discover_bt_elevation_min"
-            android:text="@string/elevation_min"
-            android:drawableTop="@drawable/ic_baseline_pool_24"
-            android:insetLeft="24dp"
-            android:layout_weight="1"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <com.google.android.material.button.MaterialButton
-            style="@style/Style.Voyage.Button.Outlined"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/discover_bt_elevation_mid"
-            android:text="@string/elevation_mid"
-            android:insetRight="8dp"
-            android:insetLeft="8dp"
-            android:drawableTop="@drawable/ic_baseline_hiking_24"
-            android:layout_weight="1"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/discover_bt_population_min"
-            app:layout_constraintEnd_toStartOf="@id/discover_bt_population_max"/>
-
-        <com.google.android.material.button.MaterialButton
-            style="@style/Style.Voyage.Button.Outlined"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/discover_bt_elevation_max"
-            android:text="@string/elevation_max"
-            android:drawableTop="@drawable/ic_baseline_terrain_24"
-            android:insetRight="24dp"
-            android:layout_weight="1"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-    </com.google.android.material.button.MaterialButtonToggleGroup>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/text_gallery"
@@ -204,6 +157,6 @@
         android:layout_marginEnd="40dp"
         android:layout_marginTop="32dp"
         android:elevation="2dp"
-        app:layout_constraintTop_toBottomOf="@id/discover_toggle_elevation"
+        app:layout_constraintTop_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

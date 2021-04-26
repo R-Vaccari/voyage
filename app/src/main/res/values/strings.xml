@@ -20,6 +20,8 @@
     <string name="elevation_mid">Hills</string>
     <string name="elevation_max">Mountains</string>
 
+    <string name="experience">Experience</string>
+    <string name="experience_info">Find regions that would provide you the ideal travel experience, considering cultures and climates you look for.</string>
     <string name="experience_mediterranean">Mediterranean</string>
     <string name="experience_black_sea">Black Sea</string>
     <string name="experience_north">Northern Lights</string>
