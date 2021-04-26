@@ -36,14 +36,12 @@
             app:layout_constraintTop_toBottomOf="@id/discover_experience_title"
             app:layout_constraintStart_toStartOf="@id/discover_experience_title"/>
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+        <ImageButton
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            style="@style/Style.Voyage.ForwardButton.Circle"
             android:id="@+id/discover_experience_bt"
             android:layout_marginEnd="24dp"
-            android:background="@drawable/circle_shape"
-            android:src="@drawable/ic_round_arrow_forward_24"
-            app:tint="@color/primary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
@@ -61,7 +59,7 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/experience"
+            android:text="@string/style"
             style="@style/Style.Voyage.InfoBox.Header"
             android:id="@+id/discover_style_title"
             android:layout_margin="16dp"
@@ -71,21 +69,19 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/experience_info"
+            android:text="@string/style_info"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toStartOf="@id/discover_style_bt"
             app:layout_constraintTop_toBottomOf="@id/discover_style_title"
             app:layout_constraintStart_toStartOf="@id/discover_style_title"/>
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+        <ImageButton
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            style="@style/Style.Voyage.ForwardButton.Circle"
             android:id="@+id/discover_style_bt"
             android:layout_marginEnd="24dp"
-            android:background="@drawable/circle_shape"
-            android:src="@drawable/ic_round_arrow_forward_24"
-            app:tint="@color/primary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
@@ -96,38 +92,43 @@
         android:layout_width="match_parent"
         android:layout_height="160dp"
         style="@style/InfoTab"
-        android:id="@+id/discover_experience_layout"
+        android:id="@+id/discover_elevation_layout"
         android:layout_marginTop="32dp"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/discover_style_layout">
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/experience"
+            android:text="@string/elevation"
             style="@style/Style.Voyage.InfoBox.Header"
-            android:id="@+id/discover_experience_title"
+            android:id="@+id/discover_elevation_title"
             android:layout_margin="16dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/optional"
+            app:layout_constraintTop_toBottomOf="@id/discover_elevation_title"
+            app:layout_constraintStart_toStartOf="@id/discover_elevation_title" />
+
+        <com.google.android.material.textview.MaterialTextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/experience_info"
+            android:text="@string/elevation_info"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toStartOf="@id/discover_experience_bt"
-            app:layout_constraintTop_toBottomOf="@id/discover_experience_title"
-            app:layout_constraintStart_toStartOf="@id/discover_experience_title"/>
+            app:layout_constraintEnd_toStartOf="@id/discover_elevatione_bt"
+            app:layout_constraintTop_toBottomOf="@id/discover_elevation_title"
+            app:layout_constraintStart_toStartOf="@id/discover_elevation_title"/>
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/discover_experience_bt"
+        <ImageButton
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            style="@style/Style.Voyage.ForwardButton.Circle"
+            android:id="@+id/discover_elevatione_bt"
             android:layout_marginEnd="24dp"
-            android:background="@drawable/circle_shape"
-            android:src="@drawable/ic_round_arrow_forward_24"
-            app:tint="@color/primary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>

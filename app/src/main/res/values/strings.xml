@@ -7,15 +7,21 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <string name="optional">Optional</string>
+
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_discover">Discover</string>
 
-    <string name="pop_min">Countryside</string>
-    <string name="pop_mid">City</string>
-    <string name="pop_max">Metropolis</string>
+    <string name="style">Trip Style</string>
+    <string name="style_info">Would you prefer a relaxing rural vacation, or an adventure in the world\'s greatest cities?</string>
+    <string name="style_countryside">Countryside</string>
+    <string name="style_city">City</string>
+    <string name="style_metropolis">Metropolis</string>
 
+    <string name="elevation">Elevation</string>
+    <string name="elevation_info">Are you a mountain or beach person? Telling us your preferred altitudes helps us find your ideal trip.</string>
     <string name="elevation_min">Sea Level</string>
     <string name="elevation_mid">Hills</string>
     <string name="elevation_max">Mountains</string>

@@ -55,4 +55,11 @@
         <item name="android:background">@android:color/white</item>
         <item name="android:elevation">1dp</item>
     </style>
+
+    <style name="Style.Voyage.ForwardButton.Circle" parent="Widget.AppCompat.ImageButton">
+        <item name="android:background">@drawable/circle_shape</item>
+        <item name="android:src">@drawable/ic_round_arrow_forward_24</item>
+        <item name="tint">@color/primary</item>
+        <item name="android:elevation">1dp</item>
+    </style>
 </resources>
