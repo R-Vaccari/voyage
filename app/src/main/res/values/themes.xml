@@ -13,6 +13,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <item name="fontFamily">@font/crimson_text</item>
+        <item name="appBarLayoutStyle">@style/Style.Voyage.Appbar</item>
         <!-- Customize your theme here. -->
     </style>
 
@@ -25,6 +26,10 @@
 
     <style name="Theme.Voyage.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" >
         <item name="android:backgroundTint">@android:color/transparent</item>
+    </style>
+
+    <style name="Style.Voyage.Appbar" parent="Widget.MaterialComponents.AppBarLayout.Primary">
+        <item name="android:elevation">0dp</item>
     </style>
 
     <style name="Style.Voyage.Button.Light" parent="Widget.MaterialComponents.Button">

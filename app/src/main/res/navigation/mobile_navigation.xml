@@ -56,7 +56,13 @@
         <fragment
             android:id="@+id/nav_options"
             android:name="com.rvapp.voyage.ui.discover.options.OptionsFragment"
-            tools:layout="@layout/fragment_discover_options" />
+            tools:layout="@layout/fragment_discover_options" >
+            <argument
+                android:name="items"
+                app:argType="com.rvapp.voyage.model.entities.OptionsItem[]" />
+        </fragment>
+
+
         <fragment
             android:id="@+id/nav_city_list"
             android:name="com.rvapp.voyage.ui.discover.cities.CityListFragment"

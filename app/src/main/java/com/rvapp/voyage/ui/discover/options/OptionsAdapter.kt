@@ -2,15 +2,16 @@ package com.rvapp.voyage.ui.discover.options
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.rvapp.voyage.model.entities.OptionsItem
 
-class OptionsAdapter(val fragment: Fragment): FragmentStateAdapter(fragment) {
+class OptionsAdapter(val fragment: Fragment,
+                     val items: Array<OptionsItem>): FragmentStateAdapter(fragment) {
+
     override fun getItemCount(): Int {
-        return 3
+        return items.size
     }
 
     override fun createFragment(position: Int): Fragment {
-        return OptionsFragment()
+        return OptionsItemFragment(items[position])
     }
-
-
 }
