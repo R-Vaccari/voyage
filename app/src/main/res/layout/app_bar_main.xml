@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="0dp"
+        android:id="@+id/main_appbar"
         android:background="@null">
 
         <androidx.appcompat.widget.Toolbar
@@ -20,6 +21,13 @@
             android:background="@color/light_grey"
             android:elevation="0dp"
             app:titleTextColor="@color/primary"/>
+
+        <com.google.android.material.tabs.TabLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/main_tab"
+            android:background="@color/light_grey"
+            android:visibility="gone"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
