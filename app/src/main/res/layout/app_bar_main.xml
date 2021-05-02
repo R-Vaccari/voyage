@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/main_tab"
             android:background="@color/light_grey"
+            app:tabMode="scrollable"
             android:visibility="gone"/>
 
     </com.google.android.material.appbar.AppBarLayout>

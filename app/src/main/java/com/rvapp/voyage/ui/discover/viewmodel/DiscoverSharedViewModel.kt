@@ -11,6 +11,7 @@ import com.rvapp.voyage.model.api.DiscoverFilter
 import com.rvapp.voyage.model.api.GeoDBAPI
 import com.rvapp.voyage.model.api.WikiMediaAPI
 import com.rvapp.voyage.model.entities.City
+import com.rvapp.voyage.model.entities.OptionsItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -27,8 +28,8 @@ class DiscoverSharedViewModel(val amadeus: Amadeus) : ViewModel() {
     private val _cities = MutableLiveData<LinkedHashSet<City>>()
     val cities: LiveData<LinkedHashSet<City>> = _cities
 
-    private val _currentCity = MutableLiveData<City>()
-    val currentCity: LiveData<City> = _currentCity
+    private val _discoverOptions = MutableLiveData<HashMap<String, OptionsItem>>()
+    val discoverOptions: LiveData<HashMap<String, OptionsItem>> = _discoverOptions
 
     private fun getWikiData(city: City) {
         val api = WikiMediaAPI()
@@ -37,7 +38,6 @@ class DiscoverSharedViewModel(val amadeus: Amadeus) : ViewModel() {
         city.description = data.cityDescription
         city.population = data.population
         city.elevation = data.elevation
-        _currentCity.postValue(city)
     }
 
     fun getGeoCities() {

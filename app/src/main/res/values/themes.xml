@@ -63,7 +63,7 @@
 
     <style name="Style.Voyage.ForwardButton.Circle" parent="Widget.AppCompat.ImageButton">
         <item name="android:background">@drawable/circle_shape</item>
-        <item name="android:src">@drawable/ic_round_arrow_forward_24</item>
+        <item name="android:src">@drawable/arrow_to_check_animated</item>
         <item name="tint">@color/primary</item>
         <item name="android:elevation">1dp</item>
     </style>
